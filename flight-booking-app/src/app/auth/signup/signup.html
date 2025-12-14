@@ -1,0 +1,32 @@
+<div>
+    <h2>Create Account</h2>
+    <form (ngSubmit)="signup()">
+        <label for="username">Username</label>
+        <input type="text" [(ngModel)]="username" name="username" required>
+        <label for="email">Email</label>
+         <input type="email" [(ngModel)]="email" name="email" required>
+          <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+
+    <label>Age</label>
+    <input type="number" [(ngModel)]="age" name="age" required>
+
+    <label>Gender</label>
+    <select [(ngModel)]="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="FEMALE">Female</option>
+      <option value="MALE">Male</option>
+      <option value="OTHER">Other</option>
+    </select>
+    <label>Role</label>
+    <select [(ngModel)]="role" name="role">
+      <option value="USER">User</option>
+      <option value="ADMIN">Admin</option>
+    </select>
+
+    <button type="submit">Sign Up</button>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+</div>

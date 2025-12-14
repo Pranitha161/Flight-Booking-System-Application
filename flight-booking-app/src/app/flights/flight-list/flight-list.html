@@ -1,0 +1,35 @@
+<div class="flight-container">
+  <h2>Available Flights</h2>
+
+  <div *ngIf="flights.length === 0">
+    No flights available.
+  </div>
+
+  <table *ngIf="flights.length > 0" class="flight-table">
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Seats</th>
+        <th>One Way</th>
+        <th>Round Trip</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let f of flights">
+        <td>{{ f.airlineId }}</td>
+        <td>{{ f.fromPlace }}</td>
+        <td>{{ f.toPlace }}</td>
+        <td>{{ f.departureTime }}</td>
+        <td>{{ f.arrivalTime }}</td>
+        <td>{{ f.availableSeats }}</td>
+        <td>₹{{ f.price?.oneWay }}</td>
+        <td>₹{{ f.price?.roundTrip }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

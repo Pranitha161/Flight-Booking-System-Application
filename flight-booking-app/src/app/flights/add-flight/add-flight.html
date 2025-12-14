@@ -1,0 +1,32 @@
+<div class="add-flight-container">
+  <h2>Add New Flight</h2>
+
+  <form (ngSubmit)="addFlight()" #flightForm="ngForm">
+
+    <label>From Place:</label>
+    <input type="text" name="fromPlace" [(ngModel)]="flight.fromPlace" required />
+
+    <label>To Place:</label>
+    <input type="text" name="toPlace" [(ngModel)]="flight.toPlace" required />
+
+    <label>Departure Time:</label>
+    <input type="datetime-local" name="departureTime" [(ngModel)]="flight.departureTime" required />
+
+    <label>Arrival Time:</label>
+    <input type="datetime-local" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required />
+
+    <label>Available Seats:</label>
+    <input type="number" name="availableSeats" [(ngModel)]="flight.availableSeats" required />
+
+    <label>One Way Price:</label>
+    <input type="number" name="oneWay" [(ngModel)]="flight.price.oneWay" required />
+
+    <label>Round Trip Price:</label>
+    <input type="number" name="roundTrip" [(ngModel)]="flight.price.roundTrip" required />
+
+    <label>Airline ID:</label>
+    <input type="text" name="airlineId" [(ngModel)]="flight.airlineId" required />
+
+    <button type="submit">Add Flight</button>
+  </form>
+</div>

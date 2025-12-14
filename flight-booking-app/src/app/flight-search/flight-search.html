@@ -1,0 +1,51 @@
+<div class="search-container">
+  <h2>Search Flights</h2>
+
+  <form (ngSubmit)="searchFlights()" #searchForm="ngForm">
+
+    <label>From:</label>
+    <input type="text" name="fromPlace" [(ngModel)]="fromPlace" required />
+
+    <label>To:</label>
+    <input type="text" name="toPlace" [(ngModel)]="toPlace" required />
+
+    <label>Date:</label>
+    <input type="date" name="date" [(ngModel)]="date" required />
+
+    <button type="submit">Search</button>
+  </form>
+
+  <hr />
+
+  <div *ngIf="flights.length === 0">
+    No flights found.
+  </div>
+
+  <table *ngIf="flights.length > 0">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Seats</th>
+        <th>One Way</th>
+        <th>Round Trip</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let f of flights">
+        <td>{{ f.fromPlace }}</td>
+        <td>{{ f.toPlace }}</td>
+        <td>{{ f.departureTime }}</td>
+        <td>{{ f.arrivalTime }}</td>
+        <td>{{ f.availableSeats }}</td>
+        <td>{{ f.price?.oneWay }}</td>
+        <td>{{ f.price?.roundTrip }}</td>
+        <td><button (click)="book(f)">Book</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
