@@ -31,6 +31,7 @@ export class Login {
       next: (res) => {
         const role = this.auth.getUserRole();
         this.auth.saveToken(res.message);
+        localStorage.setItem("username", this.username);
         if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/admin']);
         } else {
