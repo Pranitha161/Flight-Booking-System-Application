@@ -1,1 +1,31 @@
-<p>admin-flight-list works!</p>
+<h2>Manage Flights</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Arrival Time</th>
+      <th>Departure Time</th>
+      <th>Oneway Price</th>
+      <th>RoundTrip Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let f of flights">
+      <td>{{ f.fromPlace }}</td>
+      <td>{{ f.toPlace }}</td>
+      <td>{{ f.arrivalTime }}</td>
+      <td>{{ f.departureTime }}</td>
+      <td>{{ f.price.oneWay }}</td>
+      <td>{{ f.price.rounTrip }}</td>
+
+      <td>
+        <button (click)="editFlight(f.id)">Edit</button>
+        <button (click)="deleteFlight(f.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
