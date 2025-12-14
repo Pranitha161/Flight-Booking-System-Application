@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
   <div class="logo">FlightApp</div>
 
   <ul class="nav-links">
@@ -17,5 +17,38 @@
     <li *ngIf="isLoggedIn" class="user-info">
   {{ userEmail }} ({{ userRole }})
 </li>
+  </ul>
+</nav> -->
+<nav class="navbar">
+  <div class="logo">FlightApp</div>
+
+  <ul class="nav-links">
+
+    <!-- User Links -->
+    <li *ngIf="isLoggedIn"><a routerLink="/flights">Flights</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="/search">Search Flights</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
+
+    <!-- Admin Section -->
+    <li *ngIf="isAdmin"><a routerLink="/admin">Admin Dashboard</a></li>
+
+    <!-- Flights Management -->
+    <li *ngIf="isAdmin"><a routerLink="/admin/flights">Manage Flights</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/admin/flights/add">Add Flight</a></li>
+
+    <!-- Airlines Management -->
+    <li *ngIf="isAdmin"><a routerLink="/admin/airlines">Manage Airlines</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/admin/airlines/add">Add Airline</a></li>
+
+    <!-- Auth -->
+    <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
+
+    <!-- User Info -->
+    <li *ngIf="isLoggedIn" class="user-info">
+      {{ userEmail }} ({{ userRole }})
+    </li>
+
   </ul>
 </nav>
