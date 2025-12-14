@@ -38,20 +38,20 @@ export class Signup {
     console.log(body);
     this.auth.signup(body).subscribe({
       next: (response) => {
+        this.errorMessage="",
         console.log(response);
         this.successMessage = "Account created successfully";
 
-        // Redirect after a short delay (optional)
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 1000);
       },
       error: (err) => {
-        console.log("Full error object:", err);
-        console.log("Backend error JSON:", err.error);
+  console.error("Login error:", err);
+  this.errorMessage = err.error?.message || "Login failed";
+  
+}
 
-        this.errorMessage = err.error?.message || "Signup failed";
-      }
 
     });
   }
