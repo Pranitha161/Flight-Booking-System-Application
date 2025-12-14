@@ -23,7 +23,6 @@ export class AdminFlightList implements OnInit {
 
   loadFlights() {
     this.flightService.getAllFlights().subscribe(res => {
-      console.log(res);
       this.flights = [...res];
       this.cd.detectChanges();
     });
