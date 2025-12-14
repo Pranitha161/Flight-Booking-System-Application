@@ -1,54 +1,93 @@
-<!-- <nav class="navbar">
-  <div class="logo">FlightApp</div>
-
-  <ul class="nav-links">
-   
-
-    <li *ngIf="isLoggedIn"><a routerLink="/flights">Flights</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="/search">Search Flights</a></li>
-     
-    <li *ngIf="isAdmin"><a routerLink="/admin">Admin Panel</a></li>
-    <li *ngIf="isAdmin"><a routerLink="admin/flights/add">Add Flight</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
-    <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
-
-    <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
-    <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
-    <li *ngIf="isLoggedIn" class="user-info">
-  {{ userEmail }} ({{ userRole }})
-</li>
-  </ul>
-</nav> -->
+<!-- 
 <nav class="navbar">
   <div class="logo">FlightApp</div>
 
   <ul class="nav-links">
 
-    <!-- User Links -->
     <li *ngIf="isLoggedIn"><a routerLink="/flights">Flights</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="/search">Search Flights</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
 
-    <!-- Admin Section -->
     <li *ngIf="isAdmin"><a routerLink="/admin">Admin Dashboard</a></li>
 
-    <!-- Flights Management -->
+
     <li *ngIf="isAdmin"><a routerLink="/admin/flights">Manage Flights</a></li>
     <li *ngIf="isAdmin"><a routerLink="/admin/flights/add">Add Flight</a></li>
 
-    <!-- Airlines Management -->
+
     <li *ngIf="isAdmin"><a routerLink="/admin/airlines">Manage Airlines</a></li>
     <li *ngIf="isAdmin"><a routerLink="/admin/airlines/add">Add Airline</a></li>
 
-    <!-- Auth -->
     <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
     <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
     <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
 
-    <!-- User Info -->
     <li *ngIf="isLoggedIn" class="user-info">
       {{ userEmail }} ({{ userRole }})
     </li>
 
   </ul>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold" routerLink="/">FlightApp</a>
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <!-- User Links -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/flights">Flights</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/search">Search Flights</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+
+        <!-- Admin Links -->
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/admin">Admin Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/admin/flights">Manage Flights</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/admin/flights/add">Add Flight</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/admin/airlines">Manage Airlines</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/admin/airlines/add">Add Airline</a>
+        </li>
+
+        <!-- Auth -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/signup">Signup</a>
+        </li>
+
+        <!-- User Info -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <span class="nav-link disabled">{{ userEmail }} ({{ userRole }})</span>
+        </li>
+
+      </ul>
+    </div>
+  </div>
 </nav>
