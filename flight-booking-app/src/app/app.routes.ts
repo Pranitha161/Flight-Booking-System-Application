@@ -40,6 +40,17 @@ export const routes: Routes = [
   path: 'profile',
   loadComponent:()=>import('./profile/profile').then(m=>m.Profile)
 },
+{
+  path: 'admin/airlines',
+  loadComponent:()=>import('./airlines/admin-airline-list/admin-airline-list').then(m=>m.AdminAirlineList),
+  canActivate: [adminGuard]
+},
+{
+  path: 'admin/airlines/add',
+  loadComponent:()=>import('./airlines/admin-add-airline/admin-add-airline').then(m=>m.AdminAddAirline),
+  canActivate: [adminGuard]
+}
+,
 
   { path: '**', redirectTo: 'flights' }
 ];
