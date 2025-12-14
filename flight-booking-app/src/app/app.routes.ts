@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: 'signup', loadComponent: () => import('./auth/signup/signup').then(m => m.Signup) },
 
 //   // User routes
-  { path: 'flights', loadComponent: () => import('./flights/flight-list/flight-list').then(m => m.FlightList) },
+  { path: 'flights', loadComponent: () => import('./flights/flight-list/flight-list').then(m => m.FlightListComponent ) },
 //   { path: 'bookings', loadComponent: () => import('./bookings/booking-list/booking-list.component').then(m => m.BookingListComponent), canActivate: [AuthGuard] },
 
 //   // Admin routes
