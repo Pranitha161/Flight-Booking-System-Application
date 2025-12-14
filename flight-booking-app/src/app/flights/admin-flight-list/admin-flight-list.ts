@@ -15,7 +15,7 @@ export class AdminFlightList implements OnInit {
 
   flights: any[] = [];
 
-  constructor(private flightService: Flights, private router: Router,private cd:ChangeDetectorRef) {}
+  constructor(private flightService: Flights, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.loadFlights();
@@ -25,7 +25,7 @@ export class AdminFlightList implements OnInit {
     this.flightService.getAllFlights().subscribe(res => {
       console.log(res);
       this.flights = [...res];
-      this.cd.detectChanges(); 
+      this.cd.detectChanges();
     });
   }
 
