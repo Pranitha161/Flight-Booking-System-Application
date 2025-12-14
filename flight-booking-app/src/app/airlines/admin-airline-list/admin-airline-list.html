@@ -1,0 +1,17 @@
+<h2>Airlines</h2>
+
+<button (click)="addAirline()">Add Airline</button>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Status</th>
+  </tr>
+
+  <tr *ngFor="let airline of airlines">
+    <td>{{ airline.id }}</td>
+    <td>{{ airline.name }}</td>
+    <td>{{ airline.status }}</td>
+  </tr>
+</table>
