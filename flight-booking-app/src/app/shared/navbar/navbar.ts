@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.css']
 })
 export class Navbar {
+showAdmin = false;
 
   constructor(private auth: Auth) {}
 
@@ -20,9 +21,9 @@ export class Navbar {
   get isAdmin() {
     return this.auth.getUserRole() === 'ROLE_ADMIN';
   }
-  get userEmail() {
-  return this.auth.getUserEmail();
-}
+ get username() {
+    return localStorage.getItem("username");
+  }
 
 get userRole() {
   return this.auth.getUserRole();
