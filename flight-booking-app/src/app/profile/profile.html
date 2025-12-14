@@ -2,7 +2,7 @@
 
   <h2>Your Profile</h2>
 
-  <!-- READ-ONLY VIEW -->
+
   <div class="profile-card" *ngIf="!editMode">
 
     <p><strong>Email:</strong> {{ user.email }}</p>
@@ -12,7 +12,6 @@
     <button (click)="enableEdit()">Edit Profile</button>
   </div>
 
-  <!-- EDIT VIEW -->
   <div class="profile-card" *ngIf="editMode">
 
     <label>Email</label>

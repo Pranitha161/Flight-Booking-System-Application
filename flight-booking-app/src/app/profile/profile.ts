@@ -6,7 +6,7 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './profile.html',
   styleUrls: ['./profile.css']
 })
@@ -19,24 +19,24 @@ export class Profile implements OnInit {
     role: ''
   };
 
-  constructor(private userService: User,private cd: ChangeDetectorRef) {}
+  constructor(private userService: User, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe((res: any) => {
-      
+
       this.user = res;
-      this.cd.detectChanges(); 
+      this.cd.detectChanges();
     });
   }
   editMode = false;
 
-enableEdit() {
-  this.editMode = true;
-}
+  enableEdit() {
+    this.editMode = true;
+  }
 
-cancelEdit() {
-  this.editMode = false;
-}
+  cancelEdit() {
+    this.editMode = false;
+  }
 
   updateProfile() {
     const updateData = {
