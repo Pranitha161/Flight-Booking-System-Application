@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../auth';
 import { Router, RouterLink } from '@angular/router';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -18,9 +18,10 @@ export class Login {
   password = ''
   errorMessage = ''
   successMessage = ''
-  constructor(private auth: Auth, private router: Router) { }
+  constructor(private auth: Auth, private router: Router,private cd:ChangeDetectorRef) { }
 
   login() {
+    this.errorMessage = "";
     console.log("login clicked");
     const body = {
       username: this.username,
@@ -29,18 +30,22 @@ export class Login {
     };
     this.auth.login(body).subscribe({
       next: (res) => {
-        const role = this.auth.getUserRole();
+        
         this.auth.saveToken(res.message);
         localStorage.setItem("username", this.username);
+        const role = this.auth.getUserRole();
         if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/admin']);
         } else {
           this.router.navigate(['/flights']);
         }
       },
-      error: (err) => {
-        console.error("Login error:", err);
-      }
+     error: (err) => {
+  console.error("Login error:", err);
+  this.errorMessage = err.error?.message || "Login failed";
+  this.cd.detectChanges();
+}
+
     });
 
 
