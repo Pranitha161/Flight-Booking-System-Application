@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Flights } from '../flights/flights'; 
+import { Flights } from '../flights/flights';
 
 @Component({
   selector: 'app-flight-search',
@@ -18,7 +18,7 @@ export class FlightSearch {
 
   flights: any[] = [];
 
-  constructor(private flightService: Flights) {}
+  constructor(private flightService: Flights) { }
 
   searchFlights() {
     const body = {
@@ -27,14 +27,14 @@ export class FlightSearch {
       date: this.date
     };
 
-   this.flightService.searchFlights(this.fromPlace, this.toPlace, this.date)
-  .subscribe({
-    next: (res) => {
-      this.flights = res;
-      console.log('Search results:', this.flights);
-    },
-    error: (err) => console.log(err)
-  });
+    this.flightService.searchFlights(this.fromPlace, this.toPlace, this.date)
+      .subscribe({
+        next: (res) => {
+          this.flights = res;
+          console.log('Search results:', this.flights);
+        },
+        error: (err) => console.log(err)
+      });
 
   }
 
