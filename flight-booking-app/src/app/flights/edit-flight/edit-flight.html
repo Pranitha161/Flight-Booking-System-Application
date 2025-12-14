@@ -1,6 +1,6 @@
-<h2>Edit Flight</h2>
+<!-- <h2>Edit Flight</h2>
 
-<div class="form">
+<div class="form" *ngIf="flight">
   <label>From</label>
   <input [(ngModel)]="flight.fromPlace">
 
@@ -21,4 +21,29 @@
 
 
   <button (click)="updateFlight()">Save</button>
+</div> -->
+<h2>Edit Flight</h2>
+
+<div class="form" *ngIf="flight">
+
+  <label>From</label>
+  <input [(ngModel)]="flight.fromPlace">
+
+  <label>To</label>
+  <input [(ngModel)]="flight.toPlace">
+
+  <label>Arrival Time</label>
+  <input type="datetime-local" [(ngModel)]="flight.arrivalTime">
+
+  <label>Departure Time</label>
+  <input type="datetime-local" [(ngModel)]="flight.departureTime">
+    <label>OneWay Price</label>
+  <input type="number" [(ngModel)]="flight.price.oneWay">
+
+  <label>RoundTrip Price</label>
+  <input type="number" [(ngModel)]="flight.price.roundTrip">
+
+
+  <button (click)="updateFlight()">Save</button>
+
 </div>

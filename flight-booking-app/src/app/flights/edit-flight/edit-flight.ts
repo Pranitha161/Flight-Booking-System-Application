@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Flights } from '../flights';
@@ -13,18 +13,23 @@ import { Flights } from '../flights';
 })
 export class EditFlight implements OnInit {
 
-  flight: any = {};
+  flight: any = null;
 
   constructor(
     private route: ActivatedRoute,
     private flightService: Flights,
-    private router: Router
+    private router: Router,
+    private cd:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.flightService.getFlightById(id!).subscribe(res => {
+      setTimeout(() => {
       this.flight = res;
+      this.cd.detectChanges();
+    });
+      
     });
   }
 
