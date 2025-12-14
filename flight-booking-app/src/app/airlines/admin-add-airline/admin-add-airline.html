@@ -1,1 +1,13 @@
-<p>admin-add-airline works!</p>
+<h2>Add Airline</h2>
+
+<div class="form">
+ 
+
+  <label>Name</label>
+  <input [(ngModel)]="airline.name">
+<label>LogoURL</label>
+<input type="text" [(ngModel)]="airline.logoUrl" placeholder="Logo URL" required />
+
+
+  <button (click)="saveAirline()">Save</button>
+</div>
