@@ -22,6 +22,19 @@ export const routes: Routes = [
   loadComponent: () => import('./flights/add-flight/add-flight').then(m => m.AddFlight),
   canActivate: [adminGuard]
 },
+{
+  path: 'admin',
+  loadComponent: () =>
+    import('./flights/admin-flight-list/admin-flight-list').then(m => m.AdminFlightList),
+  canActivate: [adminGuard]
+},
+{
+  path: 'admin/flights/edit/:id',
+  loadComponent: () =>
+    import('./flights/edit-flight/edit-flight').then(m => m.EditFlight),
+  canActivate: [adminGuard]
+}
+,
 
 {
   path: 'profile',
