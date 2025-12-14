@@ -1,0 +1,15 @@
+<div class="seat-grid">
+  <div 
+    *ngFor="let seat of seats"
+    class="seat"
+    [class.booked]="!seat.available"
+    [class.selected]="selectedSeat?.id === seat.id"
+    (click)="selectSeat(seat)"
+  >
+    {{ seat.seatNumber }}
+  </div>
+</div>
+
+<div class="selected-info" *ngIf="selectedSeat">
+  Selected Seat: {{ selectedSeat.seatNumber }}
+</div>

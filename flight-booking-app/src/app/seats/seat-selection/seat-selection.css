@@ -1,0 +1,25 @@
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  gap: 10px;
+  margin: 20px;
+}
+
+.seat {
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #e0e0e0;
+  font-weight: bold;
+}
+
+.seat.booked {
+  background: #ff6b6b;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: #4caf50;
+  color: white;
+}
