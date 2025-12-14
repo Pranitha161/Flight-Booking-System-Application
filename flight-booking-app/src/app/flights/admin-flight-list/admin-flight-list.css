@@ -1,3 +1,8 @@
+.admin-flight-container{
+    width: 80%;
+     margin: 40px auto;
+  padding: 20px;
+}
 h2 {
     text-align: center;
     margin: 30px 0;
@@ -5,7 +10,7 @@ h2 {
 }
 
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
     background: #ffffff;
@@ -22,6 +27,8 @@ th {
     padding: 14px;
     font-weight: 600;
     text-align: center;
+    background-color: #1976d2;
+    color: white;
     border-bottom: 2px solid #e0e0e0;
     white-space: nowrap;
 }

@@ -1,14 +1,12 @@
 .flight-container {
-  max-width: 900px;
+  width: 80%;
   margin: 40px auto;
-  padding: 20px;
+  
 }
-
-.title {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #333;
+h2 {
+    text-align: center;
+    margin: 30px 0;
+    font-weight: 600;
 }
 
 .no-flights {
@@ -22,7 +20,7 @@
   width: 100%;
   border-collapse: collapse;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -30,6 +28,7 @@
 .flight-table th {
   background: #1976d2;
   color: white;
+  font-weight: 600;
   padding: 12px;
   text-align: left;
   font-size: 16px;
