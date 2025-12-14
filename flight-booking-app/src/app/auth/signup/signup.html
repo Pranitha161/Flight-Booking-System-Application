@@ -1,70 +1,26 @@
-<!-- <div class="signup-container">
-  <div class="signup-image">
-    <img src="../../../images/login image.avif" alt="Flight image">
-  </div>
-  <div class="signup-form">
-    <h2>Create Account</h2>
-    <form (ngSubmit)="signup()">
-        <label for="username">Username</label>
-        <input type="text" [(ngModel)]="username" name="username" required>
-        <label for="email">Email</label>
-         <input type="email" [(ngModel)]="email" name="email" required>
-          <label>Password</label>
-    <input type="password" [(ngModel)]="password" name="password" required>
-
-    <label>Age</label>
-    <input type="number" [(ngModel)]="age" name="age" required>
-
-    <label>Gender</label>
-    <select [(ngModel)]="gender" name="gender" required>
-      <option value="">Select</option>
-      <option value="FEMALE">Female</option>
-      <option value="MALE">Male</option>
-      <option value="OTHER">Other</option>
-    </select>
-    <label>Role</label>
-    <select [(ngModel)]="role" name="role">
-      <option value="USER">User</option>
-      <option value="ADMIN">Admin</option>
-    </select>
-
-    <button type="submit">Sign Up</button>
-
-    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
-    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
-    </form>
-    </div>
-</div> -->
-<div class="container-fluid"  style="height: calc(100vh - 70px);">
+<div class="container-fluid" >
   <div class="row h-100">
-
-    <!-- LEFT SIDE IMAGE -->
     <div class="col-md-6 p-0">
       <img src="assets/images/signup.avif" class="img-fluid h-100 w-100 object-fit-contain" alt="Flight">
     </div>
-
-
-    <!-- RIGHT SIDE FORM -->
     <div class="col-md-6 d-flex justify-content-center align-items-center bg-white">
-
       <div class="card shadow p-4" style="width: 380px;">
         <h3 class="text-center mb-4">Create Account</h3>
-
         <form (ngSubmit)="signup()">
           <div class="mb-3">
 
-  <div class="d-flex justify-content-evenly mt-1">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="role" value="USER" [(ngModel)]="role">
-      <label class="form-check-label">User</label>
-    </div>
+            <div class="d-flex justify-content-evenly mt-1">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="role" value="USER" [(ngModel)]="role">
+                <label class="form-check-label">User</label>
+              </div>
 
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="role" value="ADMIN" [(ngModel)]="role">
-      <label class="form-check-label">Admin</label>
-    </div>
-  </div>
-</div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="role" value="ADMIN" [(ngModel)]="role">
+                <label class="form-check-label">Admin</label>
+              </div>
+            </div>
+          </div>
 
 
           <div class="mb-3">
@@ -99,13 +55,11 @@
 
           <button type="submit" class="btn btn-primary w-100">Sign Up</button>
           <div class="text-center mt-3">
-  <span>Already a user?</span>
-  <a routerLink="/login" class="text-primary fw-semibold" style="cursor:pointer;">
-    Login
-  </a>
-</div>
-
-
+            <span>Already a user?</span>
+            <a routerLink="/login" class="text-primary fw-semibold" style="cursor:pointer;">
+              Login
+            </a>
+          </div>
           <p class="text-success mt-2" *ngIf="successMessage">{{ successMessage }}</p>
           <p class="text-danger mt-2" *ngIf="errorMessage">{{ errorMessage }}</p>
 
