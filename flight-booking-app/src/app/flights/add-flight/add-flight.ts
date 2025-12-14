@@ -26,7 +26,7 @@ export class AddFlight {
     airlineId: ''
   };
 
-  constructor(private flightService: Flights, private router: Router) {}
+  constructor(private flightService: Flights, private router: Router) { }
 
   addFlight() {
     this.flightService.addFlight(this.flight).subscribe({

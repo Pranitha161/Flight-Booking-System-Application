@@ -1,0 +1,53 @@
+.add-flight-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.add-flight-container h4 {
+    text-align: center;
+    font-weight: 600;
+}
+
+.add-flight-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-flight-container label {
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.add-flight-container input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.add-flight-container button {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-flight-container button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .add-flight-container {
+        padding: 20px;
+    }
+}
