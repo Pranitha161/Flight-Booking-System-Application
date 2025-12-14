@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router,RouterLink  } from '@angular/router';
 
 import { Auth } from '../auth';
 @Component({
   selector: 'app-signup',
   standalone:true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterLink],
   templateUrl: './signup.html',
   styleUrl: './signup.css',
 })
@@ -21,6 +21,9 @@ export class Signup {
     successMessage='';
     role='USER'
      constructor(private auth:Auth,private router: Router){}
+      selectRole(role: string) {
+    this.role = role;
+  }
     signup(){
       console.log("signup clicled");
       const body={
