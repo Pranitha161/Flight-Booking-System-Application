@@ -6,9 +6,7 @@
 
     <li *ngIf="isLoggedIn"><a routerLink="/flights">Flights</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="/search">Search Flights</a></li>
-     <li *ngIf="isLoggedIn" class="user-info">
-  {{ userEmail }} ({{ userRole }})
-</li>
+     
     <li *ngIf="isAdmin"><a routerLink="/admin">Admin Panel</a></li>
     <li *ngIf="isAdmin"><a routerLink="admin/flights/add">Add Flight</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
@@ -16,5 +14,8 @@
 
     <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
     <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
+    <li *ngIf="isLoggedIn" class="user-info">
+  {{ userEmail }} ({{ userRole }})
+</li>
   </ul>
 </nav>
