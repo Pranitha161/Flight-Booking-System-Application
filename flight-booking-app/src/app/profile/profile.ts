@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../services/user';
+import { Auth } from '../auth/auth'; 
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 @Component({
@@ -19,7 +20,7 @@ export class Profile implements OnInit {
     role: ''
   };
 
-  constructor(private userService: User, private cd: ChangeDetectorRef) { }
+  constructor(private userService: User,private auth:Auth, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe((res: any) => {
@@ -36,6 +37,10 @@ export class Profile implements OnInit {
 
   cancelEdit() {
     this.editMode = false;
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   updateProfile() {

@@ -8,6 +8,7 @@
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Name:</strong> {{ user.username }}</p>
     <p><strong>Role:</strong> {{ user.role }}</p>
+    <button class="logout-btn" (click)="logout()">Logout</button>
 
     <button (click)="enableEdit()">Edit Profile</button>
   </div>
