@@ -2,15 +2,15 @@
   <div class="logo">FlightApp</div>
 
   <ul class="nav-links">
-    <li *ngIf="isLoggedIn" class="user-info">
+   
+
+    <li *ngIf="isLoggedIn"><a routerLink="/flights">Flights</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="/search">Search Flights</a></li>
+     <li *ngIf="isLoggedIn" class="user-info">
   {{ userEmail }} ({{ userRole }})
 </li>
-
-    <li><a routerLink="/flights">Flights</a></li>
-    <li><a routerLink="/search">Search</a></li>
-
     <li *ngIf="isAdmin"><a routerLink="/admin">Admin Panel</a></li>
-
+    <li *ngIf="isAdmin"><a routerLink="admin/flights/add">Add Flight</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
     <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
 
