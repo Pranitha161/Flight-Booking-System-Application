@@ -19,17 +19,17 @@ export class EditFlight implements OnInit {
     private route: ActivatedRoute,
     private flightService: Flights,
     private router: Router,
-    private cd:ChangeDetectorRef
-  ) {}
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.flightService.getFlightById(id!).subscribe(res => {
       setTimeout(() => {
-      this.flight = res;
-      this.cd.detectChanges();
-    });
-      
+        this.flight = res;
+        this.cd.detectChanges();
+      });
+
     });
   }
 
