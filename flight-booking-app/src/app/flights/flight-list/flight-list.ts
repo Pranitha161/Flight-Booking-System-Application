@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Flights } from '../flights';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
+
 @Component({
   selector: 'app-flight-list',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [ CommonModule],
   templateUrl: './flight-list.html',
   styleUrls: ['./flight-list.css'],
 })

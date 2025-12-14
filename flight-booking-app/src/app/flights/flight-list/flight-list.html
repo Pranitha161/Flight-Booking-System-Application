@@ -20,16 +20,25 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let f of flights">
-        <td>{{ f.airlineId }}</td>
-        <td>{{ f.fromPlace }}</td>
-        <td>{{ f.toPlace }}</td>
-        <td>{{ f.departureTime }}</td>
-        <td>{{ f.arrivalTime }}</td>
-        <td>{{ f.availableSeats }}</td>
-        <td>₹{{ f.price?.oneWay }}</td>
-        <td>₹{{ f.price?.roundTrip }}</td>
-      </tr>
+
+      <!-- Loop for each flight -->
+      <ng-container *ngFor="let f of flights">
+
+        <!-- Flight row -->
+        <tr>
+          <td>{{ f.airlineId }}</td>
+          <td>{{ f.fromPlace }}</td>
+          <td>{{ f.toPlace }}</td>
+          <td>{{ f.departureTime }}</td>
+          <td>{{ f.arrivalTime }}</td>
+          <td>{{ f.availableSeats }}</td>
+          <td>₹{{ f.price?.oneWay }}</td>
+          <td>₹{{ f.price?.roundTrip }}</td>
+        </tr>
+
+       
+      </ng-container>
+
     </tbody>
   </table>
 </div>
