@@ -32,6 +32,7 @@ export class Flights {
   }
 
   updateFlight(id: string, flight: Flight): Observable<any> {
+    console.log(id);
     return this.http.put(`${this.baseUrl}/flights/${id}`, flight);
   }
 
