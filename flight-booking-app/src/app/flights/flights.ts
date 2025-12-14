@@ -8,9 +8,9 @@ import { Flight } from './flight.model';
 export class Flights {
   private baseUrl = 'http://localhost:8765/flight-service-auth/api/flight';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
- getAllFlights(): Observable<Flight[]> {
+  getAllFlights(): Observable<Flight[]> {
     return this.http.get<Flight[]>(`${this.baseUrl}/get/flights`);
   }
 
@@ -19,12 +19,12 @@ export class Flights {
   }
 
   searchFlights(from: string, to: string, date: string): Observable<Flight[]> {
-  return this.http.post<Flight[]>(`${this.baseUrl}/search`, {
-    fromPlace: from,
-    toPlace: to,
-    date: date
-  });
-}
+    return this.http.post<Flight[]>(`${this.baseUrl}/search`, {
+      fromPlace: from,
+      toPlace: to,
+      date: date
+    });
+  }
 
 
   addFlight(flight: Flight): Observable<any> {
@@ -32,7 +32,6 @@ export class Flights {
   }
 
   updateFlight(id: string, flight: Flight): Observable<any> {
-    console.log(id);
     return this.http.put(`${this.baseUrl}/flights/${id}`, flight);
   }
 
