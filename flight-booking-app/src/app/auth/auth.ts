@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class Auth {
   private baseUrl='http://localhost:8765/auth-service/auth';
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient,private router:Router){}
   login(body:{username:string;password:string}){
     return this.http.post<any>(`${this.baseUrl}/login`,body);
   }
-  saveToken(message:string){
-    console.log(message);
-    localStorage.setItem('token',message);
+  saveToken(token:string){
+    console.log(token);
+    localStorage.setItem('token',token);
   }
   getToken(){
     return localStorage.getItem('token');
@@ -47,6 +48,7 @@ getUserId(): string | null {
 }
   logout() {
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
 
