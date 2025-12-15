@@ -23,6 +23,10 @@
 
     <label>Role</label>
     <input type="text" [(ngModel)]="user.role" disabled>
+     <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </p>
+
 
     <button (click)="updateProfile()">Save Changes</button>
     <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
