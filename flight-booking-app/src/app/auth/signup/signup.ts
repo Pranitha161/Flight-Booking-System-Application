@@ -25,7 +25,6 @@ export class Signup {
     this.role = role;
   }
   signup() {
-    console.log("signup clicled");
     const body = {
       username: this.username,
       email: this.email,
@@ -35,11 +34,9 @@ export class Signup {
       role: this.role
 
     };
-    console.log(body);
     this.auth.signup(body).subscribe({
       next: (response) => {
         this.errorMessage="",
-        console.log(response);
         this.successMessage = "Account created successfully";
 
         setTimeout(() => {
@@ -47,7 +44,6 @@ export class Signup {
         }, 1000);
       },
       error: (err) => {
-  console.error("Login error:", err);
   this.errorMessage = err.error?.message || "Login failed";
   
 }
