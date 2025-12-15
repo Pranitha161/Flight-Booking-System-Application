@@ -30,7 +30,6 @@ export class Flights {
   addFlight(flight: Flight): Observable<any> {
     return this.http.post(`${this.baseUrl}/add`, flight);
   }
-
   updateFlight(id: string, flight: Flight): Observable<any> {
     return this.http.put(`${this.baseUrl}/flights/${id}`, flight);
   }
