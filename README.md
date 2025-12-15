@@ -1,59 +1,93 @@
-# FlightBookingApp
+# Flight Booking System – Angular Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.3.
+A complete, production‑ready flight booking application built using Angular.  
+This frontend communicates with a Spring Boot backend and supports secure authentication, role‑based access, flight management, seat selection, and a full user booking flow.
 
-## Development server
+---
 
-To start a local development server, run:
+## Overview
 
-```bash
-ng serve
-```
+This project is a full‑stack airline reservation system designed for both **end‑users** and **administrators**.  
+It includes:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- A modern Angular UI  
+- Secure JWT‑based authentication  
+- Role‑aware navigation    
+- Admin flight management  
+- Airline management  
+- User profile management  
+- Reusable components and clean architecture  
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Authentication & Authorization
 
-```bash
-ng generate component component-name
-```
+### JWT Authentication  
+- Login generates a JWT token from backend  
+- Token stored in `localStorage`  
+- Token attached to every API request using an **HTTP interceptor**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Route Guards  
+- **AuthGuard** → blocks routes unless user is logged in  
+- **AdminGuard** → blocks admin pages unless role = ADMIN  
+- Guards validate token + role before navigation
 
-```bash
-ng generate --help
-```
+### Auto‑Logout  
+- Token expiry detection  
+- Automatic redirect to login  
+- Navbar updates instantly after login/logout
 
-## Building
+---
 
-To build the project run:
+## Navigation System
 
-```bash
-ng build
-```
+### Role‑based Navbar  
+- User sees: Home, Search Flights, Profile, Logout  
+- Admin sees: Add Flight, Flight List, Airlines, Logout  
+- Navbar updates dynamically based on login state
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Standalone Components  
+All components use Angular’s modern standalone architecture for cleaner imports and faster builds.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## User Features
 
-```bash
-ng test
-```
+### Flight Search
+- Search by source, destination, date  
+- Validates inputs  
+- Calls backend `/flights/search`  
+- Displays results in responsive cards  
 
-## Running end-to-end tests
+### User Profile
+- Fetches details  
+- Update name, email  
+- Future: booking history
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Admin Features
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Add Flight
+- Form includes airline, source, destination, date, time, price, seats  
+- Validates all fields  
+- Sends POST request to backend
 
-## Additional Resources
+### Edit Flight
+- Pre‑filled form  
+- Update any field  
+- Sends PUT request to backend
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Delete Flight
+- Confirmation before delete  
+- UI updates instantly  
+- No page refresh required
+
+### Airline Management
+- Add airline  
+- View airline list  
+- Used in flight creation dropdown
+
+
+
+
