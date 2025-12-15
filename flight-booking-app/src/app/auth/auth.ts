@@ -28,7 +28,6 @@ export class Auth {
     if (!token) return null;
 
     const payload = JSON.parse(atob(token.split('.')[1]));
-    console.log(payload);
     return payload.roles;
   }
   getUserEmail(): string | null {
@@ -48,6 +47,7 @@ getUserId(): string | null {
 }
   logout() {
     localStorage.removeItem('token');
+     localStorage.removeItem('username');
     this.router.navigate(['/login']);
   }
 }
