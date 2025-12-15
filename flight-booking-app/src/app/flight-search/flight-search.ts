@@ -40,6 +40,5 @@ export class FlightSearch {
 
   book(flight: any) {
     console.log('Selected flight:', flight);
-    // next step: navigate to booking page
   }
 }
