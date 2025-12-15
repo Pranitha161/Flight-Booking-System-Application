@@ -3,6 +3,9 @@
 A complete, production‑ready flight booking application built using Angular.  
 This frontend communicates with a Spring Boot backend and supports secure authentication, role‑based access, flight management, seat selection, and a full user booking flow.
 
+![Application Preview](./src/assets/images/app-preview.png)
+
+
 ---
 
 ## Overview
