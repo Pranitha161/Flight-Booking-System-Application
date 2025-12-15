@@ -1,4 +1,4 @@
-/* Hero Section */
+
 .hero-section {
   position: relative;
   height: 45vh;
@@ -9,7 +9,10 @@
   align-items: center;
   justify-content: center;
 }
-
+.icon{
+  width: 30%;
+  height: 30%;
+}
 .overlay {
   position: absolute;
   width: 100%;
