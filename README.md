@@ -72,6 +72,7 @@ All components use Angular’s modern standalone architecture for cleaner import
 - Validates inputs  
 - Calls backend `/flights/search`  
 - Displays results in responsive cards  
+
 ![Edit Profile](./src/assets/images/edit-profile.png)
 ### User Profile
 - Fetches details  
