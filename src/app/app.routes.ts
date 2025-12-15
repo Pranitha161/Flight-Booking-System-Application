@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
 import { adminGuard } from './auth/admin-guard';
+
 export const routes: Routes = [
-  { path: '', redirectTo: 'flights', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
 
 //   // Auth
   { path: 'login', loadComponent: () => import('./auth/login/login').then(m => m.Login) },
   { path: 'signup', loadComponent: () => import('./auth/signup/signup').then(m => m.Signup) },
+{
+  path: 'home',
+  loadComponent:()=>import('./home/home').then(m=>m.Home)
+},
 
 //   // User routes
   { path: 'flights', loadComponent: () => import('./flights/flight-list/flight-list').then(m => m.FlightListComponent ) },
