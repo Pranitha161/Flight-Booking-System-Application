@@ -24,6 +24,11 @@ It includes:
 ---
 
 ## Authentication & Authorization
+### Login Page
+![Login](./src/assets/images/login-preview.png)
+
+### Signup Page
+![Signup](./src/assets/images/signup-preview.png)
 
 ### JWT Authentication  
 - Login generates a JWT token from backend  
@@ -43,6 +48,11 @@ It includes:
 ---
 
 ## Navigation System
+### User Navbar
+![User Navbar](./src/assets/images/user-navbar.png)
+
+### Admin Navbar
+![Admin Navbar](./src/assets/images/admin-navbar.png)
 
 ### Role‑based Navbar  
 - User sees: Home, Search Flights, Profile, Logout  
