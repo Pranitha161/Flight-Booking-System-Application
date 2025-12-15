@@ -84,6 +84,9 @@ All components use Angular’s modern standalone architecture for cleaner import
 ## Admin Features
 
 ### Add Flight
+
+![Airline Add](./src/assets/images/add-airline.png)
+
 - Form includes airline, source, destination, date, time, price, seats  
 - Validates all fields  
 - Sends POST request to backend
@@ -97,8 +100,6 @@ All components use Angular’s modern standalone architecture for cleaner import
 - Confirmation before delete  
 - UI updates instantly  
 - No page refresh required
-
-![Airline Add](./src/assets/images/add-airline.png)
 
 ### Airline Management
 - Add airline  
