@@ -5,6 +5,14 @@ This frontend communicates with a Spring Boot backend and supports secure authen
 
 ![Application Preview](./src/assets/images/app-preview.png)
 
+---
+
+## Backend Repository (Spring Boot)
+
+This Angular frontend works together with the Spring Boot backend for authentication, flight management, airline management, and booking operations.
+
+**Backend GitHub Repository:**  
+[Flight Booking System – Spring Boot Backend](https://github.com/Pranitha161/Flight_Booking_System_Reactive_JWT)
 
 ---
 
