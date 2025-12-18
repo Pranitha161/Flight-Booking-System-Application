@@ -28,7 +28,8 @@ export class AddFlight {
 
   constructor(private flightService: Flights, private router: Router) { }
 
-  addFlight() {
+  addFlight(form: any) {
+    if (form.invalid) { form.control.markAllAsTouched(); return; }
     this.flightService.addFlight(this.flight).subscribe({
       next: () => {
         alert('Flight added successfully');

@@ -1,31 +1,41 @@
 <div class="add-flight-container">
   <h4>Add New Flight</h4>
 
-  <form (ngSubmit)="addFlight()" #flightForm="ngForm">
+  <form #flightForm="ngForm" (ngSubmit)="addFlight(flightForm)">
 
     <label>From Place:</label>
-    <input type="text" name="fromPlace" [(ngModel)]="flight.fromPlace" required />
+    <input type="text" name="fromPlace" [(ngModel)]="flight.fromPlace" required #fromCtrl="ngModel" />
+    <small class="text-danger" *ngIf="fromCtrl.invalid && fromCtrl.touched"> FromPlace is required </small>
 
     <label>To Place:</label>
-    <input type="text" name="toPlace" [(ngModel)]="flight.toPlace" required />
+    <input type="text" name="toPlace" [(ngModel)]="flight.toPlace" required #toCtrl="ngModel" />
+    <small class="text-danger" *ngIf="toCtrl.invalid && toCtrl.touched"> ToPlace is required </small>
+    <label>Arrival Time:</label>
+    <input type="datetime-local" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required #arrivalCtrl="ngModel" />
+    <small class="text-danger" *ngIf="arrivalCtrl.invalid && arrivalCtrl.touched"> ArrivalTime is required </small>
 
     <label>Departure Time:</label>
-    <input type="datetime-local" name="departureTime" [(ngModel)]="flight.departureTime" required />
-
-    <label>Arrival Time:</label>
-    <input type="datetime-local" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required />
-
+    <input type="datetime-local" name="departureTime" [(ngModel)]="flight.departureTime" required
+      #departureCtrl="ngModel" />
+    <small class="text-danger" *ngIf="departureCtrl.invalid && departureCtrl.touched"> DepartureTime is required
+    </small>
     <label>Available Seats:</label>
-    <input type="number" name="availableSeats" [(ngModel)]="flight.availableSeats" required />
+    <input type="number" name="availableSeats" [(ngModel)]="flight.availableSeats" required #seatsCtrl="ngModel" />
+    <small class="text-danger" *ngIf="seatsCtrl.invalid && seatsCtrl.touched"> Seats count is required </small>
 
     <label>One Way Price:</label>
-    <input type="number" name="oneWay" [(ngModel)]="flight.price.oneWay" required />
+    <input type="number" name="oneWay" [(ngModel)]="flight.price.oneWay" required #onewayCtrl="ngModel" />
+    <small class="text-danger" *ngIf="onewayCtrl.invalid && onewayCtrl.touched"> OneWay cost is required </small>
+
 
     <label>Round Trip Price:</label>
-    <input type="number" name="roundTrip" [(ngModel)]="flight.price.roundTrip" required />
+    <input type="number" name="roundTrip" [(ngModel)]="flight.price.roundTrip" required #twowayCtrl="ngModel" />
+    <small class="text-danger" *ngIf="twowayCtrl.invalid && twowayCtrl.touched"> TwoWay cost is required </small>
+
 
     <label>Airline ID:</label>
-    <input type="text" name="airlineId" [(ngModel)]="flight.airlineId" required />
+    <input type="text" name="airlineId" [(ngModel)]="flight.airlineId" required #airlineCtrl="ngModel" />
+    <small class="text-danger" *ngIf="airlineCtrl.invalid && airlineCtrl.touched"> Airline ID is required </small>
 
     <button type="submit">Add Flight</button>
   </form>
