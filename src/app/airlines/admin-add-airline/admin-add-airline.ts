@@ -18,30 +18,11 @@ export class AdminAddAirline {
     flightIds: []
   };
 
-
   constructor(private airlineService: Airlines, private router: Router) { }
 
-  saveAirline() {
-
-
-    if (!this.airline.name.trim()) {
-      alert("Airline name is required");
-      return;
-    }
-
-    if (!this.airline.logoUrl.trim()) {
-      alert("Logo URL is required");
-      return;
-    }
-
-    const urlRegex = /^(http|https):\/\/.*$/;
-    if (!urlRegex.test(this.airline.logoUrl)) {
-      alert("Logo URL must start with http or https");
-      return;
-    }
-
+  saveAirline(form: any) {
+    if (form.invalid) { form.control.markAllAsTouched(); return; }
     this.airlineService.addAirline(this.airline).subscribe(() => {
-      alert("Airline added successfully");
       this.router.navigate(['/admin/airlines']);
     });
   }

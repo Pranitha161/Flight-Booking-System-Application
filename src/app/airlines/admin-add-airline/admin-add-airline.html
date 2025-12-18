@@ -1,11 +1,14 @@
 <h2>Add Airline</h2>
+<form #airlineForm="ngForm" (ngSubmit)="saveAirline(airlineForm)">
+  <div class="form">
 
-<div class="form">
-  
-  <label>Name</label>
-  <input [(ngModel)]="airline.name">
-  <label>LogoURL</label>
-  <input type="text" [(ngModel)]="airline.logoUrl" required />
+    <label>Name</label>
+    <input [(ngModel)]="airline.name" name="name" required #addCtrl="ngModel">
+    <small class="text-danger" *ngIf="addCtrl.invalid && addCtrl.touched"> Airline name is required </small>
+    <label>LogoURL</label>
+    <input type="text" [(ngModel)]="airline.logoUrl" name="logoUrl" required #logoCtrl="ngModel" />
+    <small class="text-danger" *ngIf="logoCtrl.invalid && logoCtrl.touched"> Password is required </small>
+    <button type="submit">Save</button>
 
-  <button (click)="saveAirline()">Save</button>
-</div>
+  </div>
+</form>
