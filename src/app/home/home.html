@@ -5,9 +5,11 @@
     <h1>Find Your Perfect Flight</h1>
     <p>Search, compare, and book flights with ease.</p>
 
-    <button routerLink="/signup" class="cta-btn">
+    <button *ngIf="isLoggedIn else loginBtn" routerLink="/search" class="cta-btn">
       Start Searching
     </button>
+    <ng-template #loginBtn> <button routerLink="/login" class="cta-btn secondary-btn"> Login to Continue </button>
+    </ng-template>
   </div>
 </div>
 

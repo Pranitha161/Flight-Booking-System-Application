@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Auth } from '../auth/auth';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css']
 })
 export class Home {
 
+  constructor(private auth: Auth) { }
+
+  get isLoggedIn() {
+    return this.auth.isLoggedIn();
+  }
+
+  get username() {
+    return localStorage.getItem("username");
+  }
 }
