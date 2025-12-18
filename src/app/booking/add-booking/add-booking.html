@@ -1,0 +1,36 @@
+<div class="add-booking-container">
+    <h4>Add Booking</h4>
+    <form #bookForm="ngForm" (ngSubmit)="addBooking(bookForm)">
+
+        <label>Seat Count:</label>
+        <input type="number" name="seat" [(ngModel)]="bookings.seatCount" required #seatCtrl="ngModel" />
+        <small class="text-danger" *ngIf="seatCtrl.invalid && seatCtrl.touched"> SeatCount is required </small>
+
+        <label>Trip Type:</label> <select name="tripType" [(ngModel)]="bookings.tripType" required #tripCtrl="ngModel">
+            <option [ngValue]="TRIP_TYPE.ONE_WAY">One Way</option>
+            <option [ngValue]="TRIP_TYPE.ROUND_TRIP">Round Trip</option>
+        </select>
+
+        <label>Meal Preference:</label> <select name="tripType" [(ngModel)]="bookings.mealPreference" required
+            #tripCtrl="ngModel">
+            <option [ngValue]="MEAL_PREFERENCE.VEG">Vegetarian</option>
+            <option [ngValue]="MEAL_PREFERENCE.NON_VEG">Non Vegetarian</option>
+        </select>
+
+        <input type="hidden" name="flightId" [(ngModel)]="bookings.flightId" />
+
+        <label>User IDs (comma separated):</label> <input type="text" name="userIds" [(ngModel)]="userIdsInput" required
+            #userCtrl="ngModel" (change)="updateUserIds()"> <small class="text-danger"
+            *ngIf="userCtrl.invalid && userCtrl.touched"> At least one user ID is required </small>
+
+        <label>Seat Numbers (comma separated):</label> <input type="text" name="seatNumbers"
+            [(ngModel)]="seatNumbersInput" required #seatNumCtrl="ngModel" (change)="updateSeatNumbers()"> <small
+            class="text-danger" *ngIf="seatNumCtrl.invalid && seatNumCtrl.touched"> At least one seat number is required
+        </small>
+        
+        <button type="submit">Submit Booking</button>
+          <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </p>
+    </form>
+</div>
