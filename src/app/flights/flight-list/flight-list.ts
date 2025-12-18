@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Flights } from '../flights';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-flight-list',
@@ -13,7 +15,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class FlightListComponent implements OnInit {
   flights: any[] = [];
 
-  constructor(private flightService: Flights, private cd: ChangeDetectorRef) { }
+  constructor(private flightService: Flights, private cd: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit(): void {
     this.flightService.getAllFlights().subscribe({
@@ -23,5 +25,8 @@ export class FlightListComponent implements OnInit {
       },
       error: (err) => console.log('Error loading flights', err),
     });
+  }
+  book(flight: any) {
+    this.router.navigate(['/add'], { state: { flight: flight } });
   }
 }
