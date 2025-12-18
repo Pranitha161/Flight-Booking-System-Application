@@ -18,7 +18,7 @@ export class Login {
   password = ''
   errorMessage = ''
   successMessage = ''
-  constructor(private auth: Auth, private router: Router,private cd:ChangeDetectorRef) { }
+  constructor(private auth: Auth, private router: Router, private cd: ChangeDetectorRef) { }
 
   login() {
     this.errorMessage = "";
@@ -30,21 +30,21 @@ export class Login {
     };
     this.auth.login(body).subscribe({
       next: (res) => {
-        
+
         this.auth.saveToken(res.message);
         localStorage.setItem("username", this.username);
         const role = this.auth.getUserRole();
         if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/flights']);
+          this.router.navigate(['/home']);
         }
       },
-     error: (err) => {
-  console.error("Login error:", err);
-  this.errorMessage = err.error?.message || "Login failed";
-  this.cd.detectChanges();
-}
+      error: (err) => {
+        console.error("Login error:", err);
+        this.errorMessage = err.error?.message || "Login failed";
+        this.cd.detectChanges();
+      }
 
     });
 

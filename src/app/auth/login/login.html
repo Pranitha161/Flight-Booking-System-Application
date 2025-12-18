@@ -8,12 +8,20 @@
 
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control" [(ngModel)]="username" name="username" required>
+                    <input type="text" class="form-control" [(ngModel)]="username" name="username" required
+                        #userCtrl="ngModel">
+                    <small class="text-danger" *ngIf="userCtrl.invalid && userCtrl.touched"> Username is required
+                    </small>
+
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+                    <input type="password" class="form-control" [(ngModel)]="password" name="password" required
+                        #passCtrl="ngModel">
+                    <small class="text-danger" *ngIf="passCtrl.invalid && passCtrl.touched">
+                        Password is required
+                    </small>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">Login</button>
@@ -22,6 +30,7 @@
                     <a routerLink="/signup" class="text-primary fw-semibold" style="cursor:pointer;">
                         Signup
                     </a>
+
                 </div>
                 <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
                     {{ errorMessage }}
