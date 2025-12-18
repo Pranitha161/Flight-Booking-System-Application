@@ -5,14 +5,19 @@
     <form (ngSubmit)="searchFlights()" #searchForm="ngForm">
 
       <label>From:</label>
-      <input type="text" name="fromPlace" [(ngModel)]="fromPlace" required />
+      <select name="fromPlace" [(ngModel)]="fromPlace" required #fromCtrl="ngModel">
+        <option value="" disabled selected>Select origin</option>
+        <option *ngFor="let place of fromPlaces" [value]="place">{{ place }}</option>
+      </select>
 
       <label>To:</label>
-      <input type="text" name="toPlace" [(ngModel)]="toPlace" required />
-
+      <select name="toPlace" [(ngModel)]="toPlace" required #toCtrl="ngModel">
+        <option value="" disabled selected>Select destination</option>
+        <option *ngFor="let place of toPlaces" [value]="place">{{ place }}</option>
+      </select>
       <label>Date:</label>
-      <input type="date" name="date" [(ngModel)]="date" required />
-
+      <input type="date" name="date" [(ngModel)]="date" [min]="minDate" required #dateCtrl="ngModel" /> <small
+        class="text-danger" *ngIf="dateCtrl.invalid && dateCtrl.touched"> Date is required </small>
       <button type="submit">Search</button>
     </form>
 
