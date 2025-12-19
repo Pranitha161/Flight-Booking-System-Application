@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { adminGuard } from './auth/admin-guard';
 
 export const routes: Routes = [
-  { path: '**', redirectTo: 'flights' },
+  // { path: '**', redirectTo: 'flights' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', loadComponent: () => import('./auth/login/login').then(m => m.Login) },
   { path: 'signup', loadComponent: () => import('./auth/signup/signup').then(m => m.Signup) },
@@ -58,6 +58,10 @@ export const routes: Routes = [
   {
     path: 'payment',
     loadComponent: () => import('./booking/payment/payment').then(m => m.Payment),
-  }
+  },
+  {
+    path: 'history',
+    loadComponent: () => import('./booking/user-bookings/user-bookings').then(m => m.UserBookings)
+  },
 ];
 
