@@ -63,5 +63,9 @@ export const routes: Routes = [
     path: 'history',
     loadComponent: () => import('./booking/user-bookings/user-bookings').then(m => m.UserBookings)
   },
+  {
+    path:'delete',
+    loadComponent:()=>import('./booking/delete-booking/delete-booking').then(m=>m.DeleteBooking)
+  }
 ];
 
