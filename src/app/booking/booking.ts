@@ -15,8 +15,8 @@ export class Booking {
   getByPnr(pnr:string):Observable<Bookings>{
     return this.http.get<Bookings>(`${this.baseUrl}/ticket/${pnr}`);
   }
-  getByEmailId(email:string):Observable<Bookings>{
-    return this.http.get<Bookings>(`${this.baseUrl}/history/${email}`);
+  getByEmailId(email:string):Observable<Bookings[]>{
+    return this.http.get<Bookings[]>(`${this.baseUrl}/history/${email}`);
   }
   cancelBooking(pnr:string):Observable<any>{
     return this.http.delete(`${this.baseUrl}/booking/cancel/${pnr}`);
