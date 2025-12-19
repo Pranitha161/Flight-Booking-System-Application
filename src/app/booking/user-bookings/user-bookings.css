@@ -1,5 +1,15 @@
 .booking-history-container {
-min-height: auto;       
-padding: 1rem;         
-overflow-y: auto;       
+    min-height: auto;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
 }

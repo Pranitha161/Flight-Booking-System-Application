@@ -11,7 +11,7 @@
         <th>Trip Type</th>
         <th>Seats</th>
         <th>Total Amount</th>
-        <!-- <th>Date</th> -->
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
         <td>{{ booking.tripType }}</td>
         <td>{{ booking.seatNumbers.join(', ') }}</td>
         <td>{{ booking.totalAmount }}</td>
-        <!-- <td>{{ booking.createdDate | date:'short' }}</td> -->
+        <td><button class="delete-btn" (click)="delete(booking)">Delete</button></td>
       </tr>
     </tbody>
   </table>
