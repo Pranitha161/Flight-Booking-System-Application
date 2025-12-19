@@ -1,0 +1,56 @@
+.delete-booking-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+/* 
+.delete-booking-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+} */
+
+/* .delete-booking-container p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+} */
+
+button {
+  min-width: 120px;
+  padding: 10px 16px;
+  margin: 8px;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.text-danger {
+  font-weight: 500;
+  margin-top: 15px;
+}

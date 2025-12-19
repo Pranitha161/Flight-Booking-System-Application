@@ -1,1 +1,16 @@
-<p>delete-booking works!</p>
+<div class="delete-booking-container">
+  <h2>Cancel Booking</h2>
+
+  <p>Are you sure you want to cancel booking with ID/PNR: <strong>{{ pnr }}</strong> ?</p>
+
+  <button (click)="cancelBooking()" class="btn btn-danger">
+    Yes, Cancel
+  </button>
+
+  <button (click)="goback()" class="btn btn-secondary">
+    No, Go Back
+  </button>
+   <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </p>
+</div>
