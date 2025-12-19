@@ -1,0 +1,30 @@
+<div class="booking-history-container">
+  <h3>Your Booking History</h3>
+
+  <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <table *ngIf="bookings.length > 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>PNR</th>
+        <th>Flight ID</th>
+        <th>Trip Type</th>
+        <th>Seats</th>
+        <th>Total Amount</th>
+        <!-- <th>Date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.pnr }}</td>
+        <td>{{ booking.flightId }}</td>
+        <td>{{ booking.tripType }}</td>
+        <td>{{ booking.seatNumbers.join(', ') }}</td>
+        <td>{{ booking.totalAmount }}</td>
+        <!-- <td>{{ booking.createdDate | date:'short' }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="bookings.length === 0">No bookings found.</p>
+</div>
