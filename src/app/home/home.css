@@ -8,6 +8,10 @@
   align-items: center;
   justify-content: center;
 }
+.home-container{
+    
+    min-height: 100vh;
+}
 
 .icon {
   width: 30%;
