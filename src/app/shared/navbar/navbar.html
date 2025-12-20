@@ -15,10 +15,10 @@
         <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" routerLink="/flights">Flights</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn && !isAdmin">
+        <li class="nav-item" *ngIf="isLoggedIn ">
           <a class="nav-link" routerLink="/search">Search Flights</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
+        <li class="nav-item" *ngIf="isLoggedIn && !isAdmin">
           <a class="nav-link" routerLink="/history">Booking History </a>
         </li>
 
@@ -36,8 +36,6 @@
           </ul>
 
         </li>
-
-
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
