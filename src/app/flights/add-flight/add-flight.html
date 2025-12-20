@@ -38,5 +38,8 @@
     <small class="text-danger" *ngIf="airlineCtrl.invalid && airlineCtrl.touched"> Airline ID is required </small>
 
     <button type="submit">Add Flight</button>
+     <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </p>
   </form>
 </div>

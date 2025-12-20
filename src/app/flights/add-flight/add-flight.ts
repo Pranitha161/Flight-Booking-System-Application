@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Flights } from '../flights';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-add-flight',
@@ -25,8 +26,8 @@ export class AddFlight {
     },
     airlineId: ''
   };
-
-  constructor(private flightService: Flights, private router: Router) { }
+  errorMessage='';
+  constructor(private flightService: Flights, private router: Router,private cd:ChangeDetectorRef) { }
 
   addFlight(form: any) {
     if (form.invalid) { form.control.markAllAsTouched(); return; }
@@ -35,7 +36,16 @@ export class AddFlight {
         alert('Flight added successfully');
         this.router.navigate(['/admin/flights']);
       },
-      error: (err) => console.log('Error adding flight', err)
+      error: (err) => {
+  console.log('Error adding flight', err);
+
+  this.errorMessage = Array.isArray(err.error?.errors)
+    ? err.error.errors[0]   // show first error
+    : err.error?.error || 'Unexpected error occurred';
+
+  this.cd.detectChanges();
+}
+
     });
   }
 }
