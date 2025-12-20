@@ -38,6 +38,10 @@ export class UserBookings implements OnInit{
     console.log(booking+" "+booking.pnr);
     this.router.navigate(['/delete'],{state:{pnr:booking.pnr}});
   }
-  canCancel(booking: Bookings & { flight?: Flight }): boolean { if (!booking.flight?.departureTime) return false; const departure = new Date(booking.flight.departureTime).getTime(); return departure > Date.now(); }
+  canCancel(booking: Bookings & { flight?: Flight }): boolean { 
+    if (booking.status === 'CANCELLED') return false;
+    if (!booking.flight?.departureTime) return false; 
+    const departure = new Date(booking.flight.departureTime).getTime(); return departure > Date.now();
+   }
 
 }
