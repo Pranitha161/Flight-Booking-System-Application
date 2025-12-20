@@ -1,13 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Bookings, TRIP_TYPE, MEAL_PREFERENCE } from '../booking.module';
+import { Bookings, TRIP_TYPE, MEAL_PREFERENCE, BOOKING_STATUS } from '../booking.module';
 import { Router } from '@angular/router';
 import { Booking } from '../booking';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../auth/auth';
 import { User, AuthResponse } from '../../services/user';
 import { forkJoin } from 'rxjs';
-
 
 @Component({
   selector: 'app-add-booking',
@@ -26,6 +25,7 @@ export class AddBooking {
     seatCount: 1,
     tripType: TRIP_TYPE.ONE_WAY,
     mealPreference: MEAL_PREFERENCE.VEG,
+    status:BOOKING_STATUS.CONFIRMED,
     flightId: '',
     userIds: [],
     seatNumbers: []
@@ -79,7 +79,7 @@ export class AddBooking {
     next: (results: AuthResponse[]) => {
       this.bookings.userIds = results.map(r => r.id);
       this.bookings.seatNumbers = this.passengers.map(p => p.seatNumber);
-      this.bookings.email = this.authService.getUserEmail()!; // booking owner
+      this.bookings.email = this.authService.getUserEmail()!; 
 
       this.bookingService.bookTicket(this.flight.id, this.bookings).subscribe({
         next: (res: any) => {

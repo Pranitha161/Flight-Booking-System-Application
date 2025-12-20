@@ -2,10 +2,6 @@
     <h4>Add Booking</h4>
     <form #bookForm="ngForm" (ngSubmit)="addBooking(bookForm)">
 
-        <!-- <label>Seat Count:</label>
-        <input type="number" name="seat" [(ngModel)]="bookings.seatCount" required #seatCtrl="ngModel" />
-        <small class="text-danger" *ngIf="seatCtrl.invalid && seatCtrl.touched"> SeatCount is required </small> -->
-
         <label>Trip Type:</label> <select name="tripType" [(ngModel)]="bookings.tripType" required #tripCtrl="ngModel">
             <option [ngValue]="TRIP_TYPE.ONE_WAY">One Way</option>
             <option [ngValue]="TRIP_TYPE.ROUND_TRIP">Round Trip</option>
@@ -18,15 +14,6 @@
         </select>
 
         <input type="hidden" name="flightId" [(ngModel)]="bookings.flightId" />
-
-        <!-- <label>User IDs (comma separated):</label> <input type="text" name="userIds" [(ngModel)]="userIdsInput" required
-            #userCtrl="ngModel" (change)="updateUserIds()"> <small class="text-danger"
-            *ngIf="userCtrl.invalid && userCtrl.touched"> At least one user ID is required </small>
-
-        <label>Seat Numbers (comma separated):</label> <input type="text" name="seatNumbers"
-            [(ngModel)]="seatNumbersInput" required #seatNumCtrl="ngModel" (change)="updateSeatNumbers()"> <small
-            class="text-danger" *ngIf="seatNumCtrl.invalid && seatNumCtrl.touched"> At least one seat number is required
-        </small> -->
         <label>Seat Count:</label>
 <input type="number" name="seat" [(ngModel)]="bookings.seatCount"
        required #seatCtrl="ngModel" min="1"
@@ -35,15 +22,6 @@
   SeatCount is required
 </small>
 
-<!-- <div *ngFor="let passenger of passengers; let i = index">
-  <label>Passenger {{ i + 1 }} ID:</label>
-  <input type="text" [(ngModel)]="passenger.userId"
-         name="userId{{i}}" required />
-
-  <label>Seat Number:</label>
-  <input type="text" [(ngModel)]="passenger.seatNumber"
-         name="seatNumber{{i}}" required />
-</div> -->
 <div *ngFor="let passenger of passengers; let i = index">
   <label>Passenger {{ i + 1 }} Name:</label>
   <input type="text" [(ngModel)]="passenger.name" name="name{{i}}" required />
@@ -54,8 +32,6 @@
   <label>Seat Number:</label>
   <input type="text" [(ngModel)]="passenger.seatNumber" name="seatNumber{{i}}" required />
 </div>
-
-
         <button type="submit">Submit Booking</button>
           <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
                     {{ errorMessage }}
