@@ -1,4 +1,4 @@
-<div class="booking-history-container">
+<!-- <div class="booking-history-container">
   <h3>Your Booking History</h3>
 
   <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
@@ -21,10 +21,30 @@
         <td>{{ booking.tripType }}</td>
         <td>{{ booking.seatNumbers.join(', ') }}</td>
         <td>{{ booking.totalAmount }}</td>
-        <td><button class="delete-btn" (click)="delete(booking)">Delete</button></td>
+        <td><button class="delete-btn" (click)="delete(booking)" >Delete</button></td>
       </tr>
     </tbody>
   </table>
 
   <p *ngIf="bookings.length === 0">No bookings found.</p>
+</div> -->
+<div class="user-bookings-container">
+  <h4>Your Bookings</h4>
+
+  <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngFor="let booking of bookings" class="booking-card">
+    <p><strong>PNR:</strong> {{ booking.pnr }}</p>
+    <p><strong>Flight ID:</strong> {{ booking.flightId }}</p>
+    <p><strong>Departure:</strong> {{ booking.flight?.departureTime }}</p>
+  
+
+    <button
+      class="btn btn-danger"
+      (click)="delete(booking)"
+      [disabled]="!canCancel(booking)"
+    >
+      Cancel Booking
+    </button>
+  </div>
 </div>
