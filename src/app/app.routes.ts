@@ -10,13 +10,13 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./home/home').then(m => m.Home)
   },
-  { 
-    path: 'flights', 
-    loadComponent: () => import('./flights/flight-list/flight-list').then(m => m.FlightListComponent) 
+  {
+    path: 'flights',
+    loadComponent: () => import('./flights/flight-list/flight-list').then(m => m.FlightListComponent)
   },
-  { 
-    path: 'admin/flights', 
-    loadComponent: () => import('./flights/admin-flight-list/admin-flight-list').then(m => m.AdminFlightList), canActivate: [adminGuard] 
+  {
+    path: 'admin/flights',
+    loadComponent: () => import('./flights/admin-flight-list/admin-flight-list').then(m => m.AdminFlightList), canActivate: [adminGuard]
   },
   {
     path: 'search',
@@ -29,14 +29,14 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    loadComponent: () =>import('./flights/admin-flight-list/admin-flight-list').then(m => m.AdminFlightList),
+    loadComponent: () => import('./flights/admin-flight-list/admin-flight-list').then(m => m.AdminFlightList),
     canActivate: [adminGuard]
   },
   {
     path: 'admin/flights/edit/:id',
-    loadComponent: () =>import('./flights/edit-flight/edit-flight').then(m => m.EditFlight),
+    loadComponent: () => import('./flights/edit-flight/edit-flight').then(m => m.EditFlight),
     canActivate: [adminGuard]
-  }, 
+  },
   {
     path: 'profile',
     loadComponent: () => import('./profile/profile').then(m => m.Profile)
@@ -64,8 +64,12 @@ export const routes: Routes = [
     loadComponent: () => import('./booking/user-bookings/user-bookings').then(m => m.UserBookings)
   },
   {
-    path:'delete',
-    loadComponent:()=>import('./booking/delete-booking/delete-booking').then(m=>m.DeleteBooking)
+    path: 'change-password',
+    loadComponent: () => import('./profile/change-password/change-password').then(m => m.ChangePassword)
+  },
+  {
+    path: 'delete',
+    loadComponent: () => import('./booking/delete-booking/delete-booking').then(m => m.DeleteBooking)
   }
 ];
 
