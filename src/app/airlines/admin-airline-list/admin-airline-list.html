@@ -8,13 +8,14 @@
     <th>ID</th>
     <th>Name</th>
     <th>URL</th>
-   
+    <th>Add Inventory</th>
   </tr>
 
   <tr *ngFor="let airline of airlines">
     <td>{{ airline.id }}</td>
     <td>{{ airline.name }}</td>
     <td>{{ airline.logoUrl}}</td>
+    <td><button (click)="addInventory(airline.id)">Add</button></td>
    
   </tr>
 </table>

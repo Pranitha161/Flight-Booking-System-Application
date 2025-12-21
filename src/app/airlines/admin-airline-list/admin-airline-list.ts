@@ -31,4 +31,8 @@ export class AdminAirlineList implements OnInit {
   addAirline() {
     this.router.navigate(['/admin/airlines/add']);
   }
+  addInventory(airlineId: number) {
+  this.router.navigate(['/admin/flights/add'], { queryParams: { airlineId } });
+}
+
 }
