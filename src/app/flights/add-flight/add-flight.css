@@ -23,7 +23,8 @@
     margin-bottom: 2px;
 }
 
-.add-flight-container input {
+.add-flight-container input,
+.add-flight-container select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
