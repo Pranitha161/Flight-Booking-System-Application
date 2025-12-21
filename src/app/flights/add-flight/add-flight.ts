@@ -43,7 +43,6 @@ export class AddFlight implements OnInit {
     if (form.invalid) { form.control.markAllAsTouched(); return; }
     this.flightService.addFlight(this.flight).subscribe({
       next: () => {
-        alert('Flight added successfully');
         this.router.navigate(['/admin/flights']);
       },
       error: (err) => {

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Flights } from '../flights/flights';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth } from '../auth/auth';
 
 
 @Component({
@@ -23,8 +24,11 @@ export class FlightSearch implements OnInit {
   flights: any[] = [];
   fromPlaces: string[] = [];
   toPlaces: string[] = [];
-  constructor(private flightService: Flights, private cd: ChangeDetectorRef, private router: Router) { }
+  currentRole: string | null = '';
+  constructor(private flightService: Flights, private cd: ChangeDetectorRef, private router: Router,private authService:Auth) { }
   ngOnInit(): void {
+    this.currentRole = this.authService.getUserRole();
+    console.log(this.currentRole);
     this.loadPlaces();
     const today = new Date(); this.minDate = today.toISOString().split('T')[0];
   }
