@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Flights } from '../flights';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-flight',
@@ -12,7 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './add-flight.html',
   styleUrls: ['./add-flight.css']
 })
-export class AddFlight {
+export class AddFlight implements OnInit {
 
   flight = {
     fromPlace: '',
@@ -26,8 +27,15 @@ export class AddFlight {
     },
     airlineId: ''
   };
-  errorMessage='';
-  constructor(private flightService: Flights, private router: Router,private cd:ChangeDetectorRef) { }
+  errorMessage = '';
+  constructor(private flightService: Flights, private router: Router, private cd: ChangeDetectorRef, private route: ActivatedRoute) { }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['airlineId']) {
+        this.flight.airlineId = params['airlineId'];
+      }
+    });
+  }
 
   addFlight(form: any) {
     if (form.invalid) { form.control.markAllAsTouched(); return; }
@@ -37,14 +45,14 @@ export class AddFlight {
         this.router.navigate(['/admin/flights']);
       },
       error: (err) => {
-  console.log('Error adding flight', err);
+        console.log('Error adding flight', err);
 
-  this.errorMessage = Array.isArray(err.error?.errors)
-    ? err.error.errors[0]   // show first error
-    : err.error?.error || 'Unexpected error occurred';
+        this.errorMessage = Array.isArray(err.error?.errors)
+          ? err.error.errors[0]
+          : err.error?.error || 'Unexpected error occurred';
 
-  this.cd.detectChanges();
-}
+        this.cd.detectChanges();
+      }
 
     });
   }
