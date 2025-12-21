@@ -57,6 +57,6 @@ export class FlightSearch implements OnInit {
     })
   }
   book(flight: any) {
-    this.router.navigate(['/add'], { state: { flight: flight } });
+    this.router.navigate(['/add'],{ queryParams: { id: flight.id}});
   }
 }
