@@ -38,7 +38,7 @@
           <th>Seats</th>
           <th>One Way</th>
           <th>Round Trip</th>
-          <th>Book</th>
+          <th *ngIf="currentRole === 'ROLE_USER'" >Book</th>
         </tr>
       </thead>
 
@@ -51,7 +51,7 @@
           <td>{{ f.availableSeats }}</td>
           <td>{{ f.price?.oneWay }}</td>
           <td>{{ f.price?.roundTrip }}</td>
-          <td><button (click)="book(f)">Book</button></td>
+          <td><button *ngIf="currentRole === 'ROLE_USER'"  (click)="book(f)">Book</button></td>
         </tr>
       </tbody>
     </table>

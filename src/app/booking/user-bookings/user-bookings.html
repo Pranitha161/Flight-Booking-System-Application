@@ -10,6 +10,7 @@
     <p><strong>Arrival:</strong> {{ booking.flight?.arrivalTime }}</p>
     <p><strong>Departure:</strong> {{ booking.flight?.departureTime }}</p>
     <p><strong>Status:</strong> {{ booking.status }}</p>
+    <p><strong>Seats:</strong> {{ booking.seatNumbers.join(', ') }}</p>
   
 
     <button

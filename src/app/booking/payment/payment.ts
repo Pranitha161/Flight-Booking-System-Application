@@ -16,6 +16,7 @@ export class Payment {
     const nav = this.router.getCurrentNavigation();
     this.pnr = nav?.extras?.state?.['pnr'];
     console.log(this.pnr);
+    
     this.amount = nav?.extras?.state?.['amount'];
   }
 }

@@ -78,13 +78,17 @@ export class AddBooking {
       this.bookings.seatNumbers = this.passengers.map(p => p.seatNumber);
       this.bookings.email = this.authService.getUserEmail()!; 
 
-      this.bookingService.bookTicket(this.flight.id, this.bookings).subscribe({
+      this.bookingService.bookTicket(this.bookings.flightId, this.bookings).subscribe({
         next: (res: any) => {
+          console.log(res);
+          console.log("hello");
+          this.cd.detectChanges();
           this.router.navigate(['/payment'], {
             state: { pnr: res.pnr, amount: res.totalAmount }
           });
         },
         error: (err) => {
+          console.log(err);
           this.errorMessage = err.error?.message || 'Unexpected error occurred';
           this.cd.detectChanges();
         }

@@ -48,7 +48,7 @@ export class UserBookings implements OnInit {
               new Date(b.flight?.departureTime || 0).getTime() -
               new Date(a.flight?.departureTime || 0).getTime()
             );
-
+            console.log(this.bookings);
             this.cd.detectChanges();
           },
           error: () => {
