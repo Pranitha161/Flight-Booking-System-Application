@@ -3,13 +3,18 @@
 
   <form #flightForm="ngForm" (ngSubmit)="addFlight(flightForm)">
 
-    <label>From Place:</label>
-    <input type="text" name="fromPlace" [(ngModel)]="flight.fromPlace" required #fromCtrl="ngModel" />
-    <small class="text-danger" *ngIf="fromCtrl.invalid && fromCtrl.touched"> FromPlace is required </small>
+    <label>From Place</label>
+    <select [(ngModel)]="flight.fromPlace" name="fromPlace" required>
+      <option value="" disabled selected>Select State</option>
+      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+    </select>
 
-    <label>To Place:</label>
-    <input type="text" name="toPlace" [(ngModel)]="flight.toPlace" required #toCtrl="ngModel" />
-    <small class="text-danger" *ngIf="toCtrl.invalid && toCtrl.touched"> ToPlace is required </small>
+    <label>To Place</label>
+    <select [(ngModel)]="flight.toPlace" name="toPlace" required>
+      <option value="" disabled selected>Select State</option>
+      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+    </select>
+
     <label>Arrival Time:</label>
     <input type="datetime-local" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required #arrivalCtrl="ngModel" />
     <small class="text-danger" *ngIf="arrivalCtrl.invalid && arrivalCtrl.touched"> ArrivalTime is required </small>
@@ -34,12 +39,12 @@
 
 
     <label>Airline ID:</label>
-    <input type="text" name="airlineId" [(ngModel)]="flight.airlineId" required #airlineCtrl="ngModel" />
+    <input type="text" name="airlineId" [(ngModel)]="flight.airlineId" required #airlineCtrl="ngModel" disabled/>
     <small class="text-danger" *ngIf="airlineCtrl.invalid && airlineCtrl.touched"> Airline ID is required </small>
 
     <button type="submit">Add Flight</button>
-     <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
-                    {{ errorMessage }}
-                </p>
+    <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
   </form>
 </div>
