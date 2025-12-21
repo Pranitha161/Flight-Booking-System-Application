@@ -8,6 +8,10 @@
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Name:</strong> {{ user.username }}</p>
     <p><strong>Role:</strong> {{ user.role }}</p>
+    <button class="btn btn-primary" (click)="goToChangePassword()">
+      Change Password
+    </button>
+
     <button class="logout-btn" (click)="logout()">Logout</button>
 
     <button (click)="enableEdit()">Edit Profile</button>
@@ -23,9 +27,9 @@
 
     <label>Role</label>
     <input type="text" [(ngModel)]="user.role" disabled>
-     <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
-                    {{ errorMessage }}
-                </p>
+    <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
 
 
     <button (click)="updateProfile()">Save Changes</button>

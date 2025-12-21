@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../services/user';
-import { Auth } from '../auth/auth'; 
+import { Auth } from '../auth/auth';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
@@ -20,8 +20,8 @@ export class Profile implements OnInit {
     username: '',
     role: ''
   };
-  errorMessage='';
-  constructor(private userService: User,private auth:Auth, private cd: ChangeDetectorRef,private router:Router) { }
+  errorMessage = '';
+  constructor(private userService: User, private auth: Auth, private cd: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe((res: any) => {
@@ -43,32 +43,32 @@ export class Profile implements OnInit {
   logout() {
     this.auth.logout();
   }
+  goToChangePassword() { this.router.navigate(['/change-password']); }
+  updateProfile() {
+    const updateData = {
+      id: this.user.id,
+      email: this.user.email,
+      username: this.user.username,
+      role: this.user.role
+    };
 
- updateProfile() {
-  const updateData = {
-    id: this.user.id,          
-    email: this.user.email,
-    username: this.user.username,
-    role: this.user.role
-  };
+    this.userService.updateProfile(updateData).subscribe({
+      next: (res: any) => {
+        if (res.username == null) {
+          alert("")
+        }
+        alert("Profile updated successfully");
+        this.editMode = false;
+        localStorage.setItem("username", res.username);
+        this.router.navigate(['/flight']);
 
- this.userService.updateProfile(updateData).subscribe({
-  next: (res:any) => {
-    if(res.username==null){
-      alert("")
-    }
-    alert("Profile updated successfully");
-    this.editMode = false;
-    localStorage.setItem("username", res.username);
-    this.router.navigate(['/flight']);
-    
-  },
-  error: (err) => {
-    console.error("Update error:", err);
-    this.errorMessage = err.error?.message || "Update failed! Username already exists";
+      },
+      error: (err) => {
+        console.error("Update error:", err);
+        this.errorMessage = err.error?.message || "Update failed! Username already exists";
+      }
+    });
+
   }
-});
-
-}
 
 }

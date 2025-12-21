@@ -50,6 +50,15 @@
     background-color: #0056b3;
 }
 
+.changePassword-btn {
+    background-color:  #007bff;
+    color: white;
+}
+
+.changePassword-btn:hover {
+    background-color: #0056b3;
+}
+
 .cancel-btn {
     background-color: #dc3545;
     color: white;
