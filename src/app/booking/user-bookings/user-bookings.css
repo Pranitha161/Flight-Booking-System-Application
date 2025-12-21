@@ -1,13 +1,17 @@
 .user-bookings-container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 30px auto;
   padding: 20px;
   background: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .user-bookings-container h4 {
+  grid-column: 1 / -1;
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
@@ -15,6 +19,7 @@
 }
 
 .text-danger {
+  grid-column: 1 / -1;
   color: #d9534f;
   font-weight: 500;
   text-align: center;
@@ -25,12 +30,11 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 15px 20px;
-  margin-bottom: 15px;
   transition: box-shadow 0.2s ease;
 }
 
 .booking-card:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 .booking-card p {
