@@ -41,12 +41,12 @@
     transition: 0.2s;
 }
 
-.profile-card button:not(.cancel-btn) {
+.profile-card button:not(.cancel-btn,.logout-btn) {
     background-color: #007bff;
     color: white;
 }
 
-.profile-card button:not(.cancel-btn):hover {
+.profile-card button:not(.cancel-btn,.logout-btn):hover {
     background-color: #0056b3;
 }
 
@@ -58,7 +58,10 @@
 .changePassword-btn:hover {
     background-color: #0056b3;
 }
-
+.logout-btn{
+    background-color: #dc3545;
+    color: white;
+}
 .cancel-btn {
     background-color: #dc3545;
     color: white;
