@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Bookings, TRIP_TYPE, MEAL_PREFERENCE, BOOKING_STATUS } from '../booking.module';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from '../booking';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../auth/auth';
@@ -41,19 +41,16 @@ export class AddBooking {
     private router: Router,
     private authService: Auth,
     private cd: ChangeDetectorRef,
-    private userService: User
-  ) {
-    const nav = this.router.getCurrentNavigation();
-    this.flight = nav?.extras?.state?.['flight'];
-    if (this.flight) {
-      this.bookings.flightId = this.flight.flightId;
-    }
-  }
+    private userService: User,
+    private route: ActivatedRoute 
+  ) { }
 
   ngOnInit() {
     this.bookings.email = this.authService.getUserEmail()!;
     this.bookings.userIds = [this.authService.getUserId()!];
-    this.updatePassengerInputs(); // initialize
+    this.updatePassengerInputs(); 
+    this.route.queryParams.subscribe(params => { this.bookings.flightId = params['id']; 
+       console.log('Flight ID from query:', this.bookings.flightId); });
   }
 
   updatePassengerInputs() {
