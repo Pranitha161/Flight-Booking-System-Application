@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
   <div class="container-fluid">
 
     <a class="navbar-brand fw-bold" routerLink="/">FlightApp</a>
@@ -30,9 +30,7 @@
 
           <ul class="dropdown-menu show" *ngIf="showAdmin">
             <li><a class="dropdown-item" routerLink="/admin/flights">Manage Flights</a></li>
-            <li><a class="dropdown-item" routerLink="/admin/flights/add">Add Flight</a></li>
             <li><a class="dropdown-item" routerLink="/admin/airlines">Manage Airlines</a></li>
-            <li><a class="dropdown-item" routerLink="/admin/airlines/add">Add Airline</a></li>
           </ul>
 
         </li>
