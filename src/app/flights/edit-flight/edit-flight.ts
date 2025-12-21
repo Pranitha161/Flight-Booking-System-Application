@@ -35,7 +35,6 @@ export class EditFlight implements OnInit {
 
   updateFlight() {
     this.flightService.updateFlight(this.flight.id, this.flight).subscribe(() => {
-      alert("Flight updated successfully");
       this.router.navigate(['/admin']);
     });
   }
