@@ -27,6 +27,9 @@ It includes:
 - Admin flight management  
 - Airline management  
 - User profile management  
+- Password policy enforcement  
+- Change Password flow with validation  
+- Docker Compose orchestration for backend services  
 - Reusable components and clean architecture  
 
 ---
@@ -43,15 +46,21 @@ It includes:
 - Token stored in `localStorage`  
 - Token attached to every API request using an **HTTP interceptor**
 
+### Password Policy  
+- Minimum length: 12 characters  
+- Must include uppercase, lowercase, number, and special character  
+
+### Change Password  
+- Users can update their password securely from the **Change Password** page  
+- Validates old vs new password  
+- Enforces password policy rules before submission  
+- On success: clears session, forces re‑login  
+- Error messages shown instantly in the UI  
+
 ### Route Guards  
 - **AuthGuard** → blocks routes unless user is logged in  
 - **AdminGuard** → blocks admin pages unless role = ADMIN  
 - Guards validate token + role before navigation
-
-### Auto‑Logout  
-- Token expiry detection  
-- Automatic redirect to login  
-- Navbar updates instantly after login/logout
 
 ---
 
@@ -63,8 +72,8 @@ It includes:
 ![Admin Navbar](./src/assets/images/admin-navbar.png)
 
 ### Role‑based Navbar  
-- User sees: Home, Search Flights, Profile, Logout  
-- Admin sees: Add Flight, Flight List, Airlines, Logout  
+- User sees: Home, Search Flights, Profile, Change Password, Logout  
+- Admin sees: Add Flight, Flight List, Airlines, Change Password, Logout  
 - Navbar updates dynamically based on login state
 
 ### Standalone Components  
@@ -85,14 +94,20 @@ All components use Angular’s modern standalone architecture for cleaner import
 ### User Profile
 - Fetches details  
 - Update name, email  
-- Future: booking history
+- Booking history integration planned  
+
+### Change Password
+![Change Password](./src/assets/images/change-password.png)
+- Accessible from profile  
+- Validates password length & complexity  
+- Prevents reuse of old password  
+- Forces logout after successful change  
 
 ---
 
 ## Admin Features
 
 ### Add Flight
-
 ![Airline Add](./src/assets/images/add-airline.png)
 
 - Form includes airline, source, destination, date, time, price, seats  
@@ -112,8 +127,16 @@ All components use Angular’s modern standalone architecture for cleaner import
 ### Airline Management
 - Add airline  
 - View airline list  
-- Used in flight creation dropdown
+- Used in flight creation dropdown  
 
+---
 
-
-
+## Deployment & Environment
+- Secrets stored in `.env` file (ignored via `.gitignore`)  
+- Example configuration provided in `.env.example`  
+- Docker Compose used to run backend services (Spring Boot, Kafka, Zookeeper, DB)  
+- Commands:  
+  ```bash
+  docker compose up --build  
+  docker compose stop         
+  docker compose down         
