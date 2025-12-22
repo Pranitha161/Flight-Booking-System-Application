@@ -140,3 +140,6 @@ All components use Angular’s modern standalone architecture for cleaner import
   docker compose up --build  
   docker compose stop         
   docker compose down         
+
+---
+Asked for pull request
