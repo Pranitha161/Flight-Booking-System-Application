@@ -18,8 +18,7 @@ export class ChangePassword {
   constructor(private userService: User, private router: Router,private cd:ChangeDetectorRef) { }
   goToProfile() { this.router.navigate(['/profile']); }
   onSubmit(form: any) {
-    console.log(form.valid);
-    console.log(this.oldPassword+" "+this.newPassword);
+    if (this.newPassword.length < 12) { this.message = "Password must be at least 12 characters long"; this.cd.detectChanges(); return; }
     if ( this.oldPassword != this.newPassword) {
       this.userService.changePassword(this.oldPassword, this.newPassword).subscribe({
         next: (res:any) => {
