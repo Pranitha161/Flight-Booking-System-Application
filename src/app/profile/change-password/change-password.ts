@@ -18,6 +18,11 @@ export class ChangePassword {
   constructor(private userService: User, private router: Router, private cd: ChangeDetectorRef) { }
   goToProfile() { this.router.navigate(['/profile']); }
   onSubmit(form: any) {
+    if(this.newPassword=== this.oldPassword){
+      this.message="New password cannot be the same as current password"
+      this.cd.detectChanges();
+      return;
+    }
     if (this.newPassword.length < 12) {
       this.message = "Password must be at least 12 characters long";
       this.cd.detectChanges();
