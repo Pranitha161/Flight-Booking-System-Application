@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { Auth } from '../../auth/auth';
 import { User, AuthResponse } from '../../services/user';
 import { forkJoin } from 'rxjs';
+import { SeatSelection } from '../../seats/seat-selection/seat-selection';
+import { Seat } from '../../seats/seats';
 
 @Component({
   selector: 'app-add-booking',
   standalone:true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,SeatSelection],
   templateUrl: './add-booking.html',
   styleUrl: './add-booking.css',
 })
@@ -33,7 +35,6 @@ export class AddBooking {
 
   passengers: { name: string; email: string; seatNumber: string }[] = [];
 
-
   errorMessage = '';
 
   constructor(
@@ -49,8 +50,10 @@ export class AddBooking {
     this.bookings.email = this.authService.getUserEmail()!;
     this.bookings.userIds = [this.authService.getUserId()!];
     this.updatePassengerInputs(); 
-    this.route.queryParams.subscribe(params => { this.bookings.flightId = params['id']; 
-       console.log('Flight ID from query:', this.bookings.flightId); });
+    this.route.queryParams.subscribe(params => 
+      { this.bookings.flightId = params['id']; 
+       });
+       
   }
 
   updatePassengerInputs() {
@@ -61,13 +64,27 @@ export class AddBooking {
   }));
 }
 
+onSeatSelected(seat: Seat, passengerIndex: number) {
+  const alreadyTaken = this.passengers.some(
+    (p, idx) => idx !== passengerIndex && p.seatNumber === seat.seatNumber
+  );
+
+  if (alreadyTaken) {
+    this.errorMessage = `Seat ${seat.seatNumber} is already selected by another passenger`;
+    this.cd.detectChanges();
+    return;
+  }
+
+  this.passengers[passengerIndex].seatNumber = seat.seatNumber;
+}
+
 
  addBooking(form: any) {
   if (form.invalid) {
     form.control.markAllAsTouched();
     return;
   }
-
+  this.bookings.seatNumbers = this.passengers.map(p => p.seatNumber);
   const lookups = this.passengers.map(p =>
     this.userService.getPassengerByEmail(p.email)
   );
@@ -75,13 +92,10 @@ export class AddBooking {
   forkJoin(lookups).subscribe({
     next: (results: AuthResponse[]) => {
       this.bookings.userIds = results.map(r => r.id);
-      this.bookings.seatNumbers = this.passengers.map(p => p.seatNumber);
       this.bookings.email = this.authService.getUserEmail()!; 
 
       this.bookingService.bookTicket(this.bookings.flightId, this.bookings).subscribe({
         next: (res: any) => {
-          console.log(res);
-          console.log("hello");
           this.cd.detectChanges();
           this.router.navigate(['/payment'], {
             state: { pnr: res.pnr, amount: res.totalAmount }

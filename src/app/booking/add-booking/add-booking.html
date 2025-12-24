@@ -28,8 +28,11 @@
       <label>Passenger {{ i + 1 }} Email:</label>
       <input type="email" [(ngModel)]="passenger.email" name="email{{i}}" required />
 
-      <label>Seat Number:</label>
-      <input type="text" [(ngModel)]="passenger.seatNumber" name="seatNumber{{i}}" required />
+      <app-seat-selection
+  [flightId]="bookings.flightId"
+  (seatSelected)="onSeatSelected($event, i)">
+</app-seat-selection>
+
     </div>
     <button type="submit">Submit Booking</button>
     <p class="text-danger mt-2 text-center" *ngIf="errorMessage">
