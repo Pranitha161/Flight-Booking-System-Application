@@ -33,8 +33,8 @@ export class User{
     return this.http.get<AuthResponse>(`${this.baseUrl}/get/${passengerId}`);
   }
 
-  changePassword(oldPassword:string,newPassword:string){
-    return this.http.post<any>(`${this.baseUrl}/change-password`,{oldPassword,newPassword});
+  changePassword(userName:string,oldPassword:string,newPassword:string){
+    return this.http.post<any>(`${this.baseUrl}/change-password`,{userName,oldPassword,newPassword});
   }
 
   deletePassenger(passengerId: string): Observable<string> {
