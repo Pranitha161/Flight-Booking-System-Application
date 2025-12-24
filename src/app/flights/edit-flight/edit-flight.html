@@ -9,10 +9,10 @@
   <input [(ngModel)]="flight.toPlace">
 
   <label>Arrival Time</label>
-  <input type="datetime-local" [(ngModel)]="flight.arrivalTime">
+  <input type="datetime-local" [min]="minDate" [(ngModel)]="flight.arrivalTime">
 
   <label>Departure Time</label>
-  <input type="datetime-local" [(ngModel)]="flight.departureTime">
+  <input type="datetime-local" [min]="minDate" [(ngModel)]="flight.departureTime">
   <label>OneWay Price</label>
   <input type="number" [(ngModel)]="flight.price.oneWay">
 

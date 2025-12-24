@@ -14,7 +14,8 @@ import { Flights } from '../flights';
 export class EditFlight implements OnInit {
 
   flight: any = null;
-
+   minDate: string = '';
+   
   constructor(
     private route: ActivatedRoute,
     private flightService: Flights,
@@ -24,6 +25,7 @@ export class EditFlight implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    const today = new Date(); this.minDate = today.toISOString().slice(0,16);
     this.flightService.getFlightById(id!).subscribe(res => {
       setTimeout(() => {
         this.flight = res;

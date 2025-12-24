@@ -16,11 +16,11 @@
     </select>
 
     <label>Arrival Time:</label>
-    <input type="datetime-local" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required #arrivalCtrl="ngModel" />
+    <input type="datetime-local" [min]="minDate" name="arrivalTime" [(ngModel)]="flight.arrivalTime" required #arrivalCtrl="ngModel" />
     <small class="text-danger" *ngIf="arrivalCtrl.invalid && arrivalCtrl.touched"> ArrivalTime is required </small>
 
     <label>Departure Time:</label>
-    <input type="datetime-local" name="departureTime" [(ngModel)]="flight.departureTime" required
+    <input type="datetime-local" [min]="minDate" name="departureTime" [(ngModel)]="flight.departureTime" required
       #departureCtrl="ngModel" />
     <small class="text-danger" *ngIf="departureCtrl.invalid && departureCtrl.touched"> DepartureTime is required
     </small>

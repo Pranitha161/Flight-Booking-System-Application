@@ -5,6 +5,7 @@ import { Flights } from '../flights';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Auth } from '../../auth/auth';
 
 @Component({
   selector: 'app-add-flight',
@@ -29,13 +30,17 @@ export class AddFlight implements OnInit {
   };
   states: string[] = [];
   errorMessage = '';
+  
+  minDate: string = '';
   constructor(private flightService: Flights, private router: Router, private cd: ChangeDetectorRef, private route: ActivatedRoute) { }
   ngOnInit(): void {
+    
     this.route.queryParams.subscribe(params => {
       if (params['airlineId']) {
         this.flight.airlineId = params['airlineId'];
       }
     });
+    const today = new Date(); this.minDate = today.toISOString().slice(0,16);
     this.states = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry'];
   }
 
