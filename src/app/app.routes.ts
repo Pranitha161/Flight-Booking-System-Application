@@ -68,6 +68,10 @@ export const routes: Routes = [
     loadComponent: () => import('./profile/change-password/change-password').then(m => m.ChangePassword)
   },
   {
+    path:'seats',
+    loadComponent:()=>import('./seats/seat-selection/seat-selection').then(m=>m.SeatSelection)
+  },
+  {
     path: 'delete',
     loadComponent: () => import('./booking/delete-booking/delete-booking').then(m => m.DeleteBooking)
   }
