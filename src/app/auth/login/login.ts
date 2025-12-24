@@ -30,9 +30,17 @@ export class Login {
     };
     this.auth.login(body).subscribe({
       next: (res) => {
-
+        localStorage.setItem("username", this.username);
+         if (res.message==="PASSWORD_EXPIRED")
+          { 
+            this.errorMessage = "Your password has expired. Please change it to continue."; 
+            this.cd.detectChanges(); 
+            setTimeout(() => { this.router.navigate(['/change-password']); }, 2000); 
+            return; 
+          }
         this.auth.saveToken(res.message);
         localStorage.setItem("username", this.username);
+       
         const role = this.auth.getUserRole();
         if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/admin']);
@@ -42,7 +50,7 @@ export class Login {
       },
       error: (err) => {
         console.error("Login error:", err);
-        this.errorMessage = err.error?.message || "Login failed";
+        this.errorMessage = err.error?.message || "Login failed"; 
         this.cd.detectChanges();
       }
 
