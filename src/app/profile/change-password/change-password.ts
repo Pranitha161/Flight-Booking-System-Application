@@ -18,6 +18,7 @@ export class ChangePassword {
   constructor(private userService: User, private router: Router, private cd: ChangeDetectorRef) { }
   goToProfile() { this.router.navigate(['/profile']); }
   onSubmit(form: any) {
+    
     if(this.newPassword=== this.oldPassword){
       this.message="New password cannot be the same as current password"
       this.cd.detectChanges();
@@ -38,9 +39,10 @@ export class ChangePassword {
       this.cd.detectChanges();
       return;
     }
+    const username = localStorage.getItem("username") || "";
     
     if (this.oldPassword != this.newPassword) {
-      this.userService.changePassword(this.oldPassword, this.newPassword).subscribe({
+      this.userService.changePassword(username,this.oldPassword, this.newPassword).subscribe({
         next: (res: any) => {
           this.message = res.message + " " + "Need to login again";
           localStorage.removeItem('token');
