@@ -1,6 +1,6 @@
 .seat-grid {
   display: grid;
-  grid-template-columns: repeat(6, 50px);
+  grid-template-columns: repeat(9, 50px);
   gap: 10px;
   margin: 20px;
 }
