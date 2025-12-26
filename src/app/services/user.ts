@@ -12,10 +12,10 @@ export interface AuthResponse {
 @Injectable({
   providedIn: 'root'
 })
-export class User{
+export class User {
   private baseUrl = 'http://localhost:8765/user-service/auth';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProfile(): Observable<AuthResponse> {
     return this.http.get<AuthResponse>(`${this.baseUrl}/me`);
@@ -33,8 +33,16 @@ export class User{
     return this.http.get<AuthResponse>(`${this.baseUrl}/get/${passengerId}`);
   }
 
-  changePassword(userName:string,oldPassword:string,newPassword:string){
-    return this.http.post<any>(`${this.baseUrl}/change-password`,{userName,oldPassword,newPassword});
+  changePassword(userName: string, oldPassword: string, newPassword: string) {
+    return this.http.post<any>(`${this.baseUrl}/change-password`, { userName, oldPassword, newPassword });
+  }
+
+  requestPasswordReset(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/request-reset`, { email });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/reset-password`, { token, newPassword });
   }
 
   deletePassenger(passengerId: string): Observable<string> {
