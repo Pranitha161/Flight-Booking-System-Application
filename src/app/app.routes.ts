@@ -71,6 +71,14 @@ export const routes: Routes = [
     path:'seats',
     loadComponent:()=>import('./seats/seat-selection/seat-selection').then(m=>m.SeatSelection)
   },
+  { 
+    path: 'forgot-password', 
+    loadComponent: () => import('./profile/forget-password/forget-password').then(m => m.ForgotPassword) 
+  }, 
+  { 
+    path: 'reset-password', 
+    loadComponent: () => import('./profile/reset-password/reset-password').then(m => m.ResetPassword) 
+  },
   {
     path: 'delete',
     loadComponent: () => import('./booking/delete-booking/delete-booking').then(m => m.DeleteBooking)
